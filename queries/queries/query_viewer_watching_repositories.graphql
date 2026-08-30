@@ -1,0 +1,23 @@
+query GetWatchingRepositories(
+  $first: Int!
+  $after: String
+  $orderBy: RepositoryOrder
+) {
+  viewer {
+    watching(
+      first: $first
+      after: $after
+      orderBy: $orderBy
+    ) {
+      totalCount
+      nodes {
+        name
+        updatedAt
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+}
