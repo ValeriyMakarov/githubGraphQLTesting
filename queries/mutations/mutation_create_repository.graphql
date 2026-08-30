@@ -1,0 +1,13 @@
+mutation CreateRepository($input: CreateRepositoryInput!){
+    createRepository(input: $input){
+        repository {
+            owner {
+                id
+            }
+            id
+            name
+            visibility
+            description
+        }
+    }
+}
