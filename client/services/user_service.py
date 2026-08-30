@@ -1,10 +1,12 @@
 from assertpy import assert_that
 from requests import Response
 
-from client.helpers import read_graphql_file
+from client.logger_helper import log_all_methods
+from client.query_reader_helper import read_graphql_file
 from client.services.base_service import BaseService
 
 
+@log_all_methods
 class UserService(BaseService):
     def query_viewer_login(self) -> Response:
         query = read_graphql_file("query_viewer_login")

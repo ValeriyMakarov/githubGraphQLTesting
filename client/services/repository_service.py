@@ -5,7 +5,8 @@ from typing import Literal
 from assertpy import assert_that
 from requests import Response
 
-from client.helpers import read_graphql_file
+from client.logger_helper import log_all_methods
+from client.query_reader_helper import read_graphql_file
 from client.services.base_service import BaseService
 from utils.validators import verify_status_code, verify_graphql_has_no_errors
 
@@ -24,6 +25,7 @@ class OrderBy:
     repository_order_field: RepositoryOrderField
 
 
+@log_all_methods
 class RepositoryService(BaseService):
     def query_create_repository(
             self, name: str, visibility: RepositoryVisibility,

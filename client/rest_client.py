@@ -25,7 +25,6 @@ class RestClient:
 
     def delete_repository(self, owner: str, repository_name: str):
         response = self.delete(f"/repos/{owner}/{repository_name}")
-        assert (
-            response.status_code == HTTPStatus.NO_CONTENT,
+        assert response.status_code == HTTPStatus.NO_CONTENT, (
             f"Repository {repository_name} of {owner} hasn't been deleted."
         )
