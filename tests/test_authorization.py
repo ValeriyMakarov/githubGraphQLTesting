@@ -1,8 +1,9 @@
 from http import HTTPStatus
 
 from utils.validators import (
-    verify_status_code, verify_graphql_has_no_errors,
-    verify_http_message, verify_http_message_contains)
+    verify_graphql_has_no_errors, verify_http_message,
+    verify_http_message_contains, verify_status_code
+)
 
 
 def test_get_login_without_token(user_service):

@@ -3,7 +3,8 @@ from http import HTTPStatus
 import pytest
 
 from client.services.repository_service import OrderBy
-from utils.validators import verify_status_code, verify_graphql_has_no_errors
+from utils.validators import verify_graphql_has_no_errors, verify_status_code
+
 
 @pytest.fixture
 def viewer_watching_repositories_count(repository_service):
@@ -121,7 +122,7 @@ def test_viewer_watching_repositories_pagination_with_one_item(
         OrderBy(order_direction="ASC", repository_order_field="NAME"),
         OrderBy(order_direction="ASC", repository_order_field="UPDATED_AT"),
         OrderBy(order_direction="DESC", repository_order_field="NAME"),
-        OrderBy(order_direction="ASC", repository_order_field="UPDATED_AT")
+        OrderBy(order_direction="DESC", repository_order_field="UPDATED_AT")
     ]
 )
 @pytest.mark.requires_watching_repositories

@@ -30,8 +30,8 @@ class Client:
         self.headers.update(headers)
 
     def remove_headers(self, header: str, *headers: str):
-        for header in (header, *headers):
-            self.headers.pop(header, None)
+        for header_ in (header, *headers):
+            self.headers.pop(header_, None)
 
     def with_headers(self, headers: dict[str, str]) -> Self:
         _copy = deepcopy(self)
