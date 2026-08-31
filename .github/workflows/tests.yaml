@@ -20,6 +20,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
+      GITHUB_USERNAME: ${{ vars.USERNAME }}
     steps:
       - name: checkout
         uses: actions/checkout@v7
