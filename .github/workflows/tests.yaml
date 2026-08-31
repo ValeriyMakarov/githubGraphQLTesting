@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: logs
-          path: test_run_data/
+          path: allure-results/
