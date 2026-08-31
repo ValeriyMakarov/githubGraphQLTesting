@@ -1,7 +1,8 @@
 import functools
 import inspect
 import logging
-from typing import Callable, Any
+from collections.abc import Callable
+from typing import Any
 
 import allure
 
@@ -10,7 +11,10 @@ def log_all_methods(cls):
     cls.logger = logging.getLogger(f'{cls.__module__}.{cls.__name__}')
 
     for attr_name, attr_value in cls.__dict__.items():
-        is_method = inspect.isfunction(attr_value) or isinstance(attr_value, (staticmethod, classmethod))
+        is_method = (
+            inspect.isfunction(attr_value)
+            or isinstance(attr_value, (staticmethod, classmethod))
+        )
         has_valid_name = not attr_name.startswith("_")
 
         if is_method and isinstance(attr_value, staticmethod) and has_valid_name:
@@ -75,7 +79,7 @@ def _compile_step_name(base_name: str, parameters: list[tuple[str, Any]]):
     def wrap(item):
         return f'"{item}"' if isinstance(item, str) else item
 
-    additional_data = ', '.join(map(lambda param: f'{param[0]}={wrap(param[1])}', parameters))
+    additional_data = ', '.join(f'{name}={wrap(value)}' for name, value in parameters)
     return f'{base_name} with {additional_data}.' if additional_data else f'{base_name}.'
 
 

@@ -8,7 +8,7 @@ from requests import Response
 from client.logger_helper import log_all_methods
 from client.query_reader_helper import read_graphql_file
 from client.services.base_service import BaseService
-from utils.validators import verify_status_code, verify_graphql_has_no_errors
+from utils.validators import verify_graphql_has_no_errors, verify_status_code
 
 RepositoryVisibility = Literal["PUBLIC", "PRIVATE", "INTERNAL"]
 
@@ -164,6 +164,5 @@ class RepositoryService(BaseService):
         field_name = ORDER_RESPONSE_FIELDS[order_by.repository_order_field]
 
         reverse = order_by.order_direction == "DESC" or False
-        key = lambda repo: repo[field_name]
 
-        assert_that(repositories).is_sorted(key, reverse) # type: ignore
+        assert_that(repositories).is_sorted(lambda repo: repo[field_name], reverse) # type: ignore
