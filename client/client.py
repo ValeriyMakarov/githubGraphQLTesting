@@ -19,6 +19,9 @@ class Client:
             "Content-Type": "application/json",
         }
 
+        self.connection_timeout = 3
+        self.response_timeout = 10
+
     def set_token(self, token: str):
         auth_header = {"Authorization": f"Bearer {token}"}
         self.update_headers(auth_header)
@@ -54,7 +57,8 @@ class Client:
         }
 
         response = requests.post(
-            url=self.GITHUB_GRAPHQL_URL, json=json, headers=self.headers
+            url=self.GITHUB_GRAPHQL_URL, json=json, headers=self.headers,
+            timeout=(self.connection_timeout, self.response_timeout)
         )
 
         return response
