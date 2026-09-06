@@ -18,10 +18,14 @@ class RestClient:
             "Content-Type": "application/json",
         }
 
-    def delete(self, endpoint: str):
+        self.connection_timeout = 3
+        self.response_timeout = 10
+
+    def delete(self, endpoint: str, timeout=10):
         return requests.delete(
-            f"{self.GITHUB_URL}{endpoint}",
-            headers=self.headers)
+            f"{self.GITHUB_URL}{endpoint}", headers=self.headers,
+            timeout=(self.connection_timeout, self.response_timeout)
+        )
 
     def delete_repository(self, owner: str, repository_name: str):
         response = self.delete(f"/repos/{owner}/{repository_name}")
