@@ -2,6 +2,7 @@ import os
 
 import dotenv
 import pytest
+from pygments.styles.dracula import yellow
 
 from client.client import Client
 from client.services.repository_service import RepositoryService
@@ -19,16 +20,18 @@ def viewer_username() -> str:
     return name
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def client():
     return Client()
 
 
 @pytest.fixture
 def user_service(client):
-    return UserService(client)
+    _user_service = UserService(client.copy())
+    yield _user_service
 
 
 @pytest.fixture
 def repository_service(client):
-    return RepositoryService(client)
+    _repository_service = RepositoryService(client.copy())
+    yield _repository_service
