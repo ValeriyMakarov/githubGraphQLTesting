@@ -8,7 +8,8 @@ from requests import Response
 from client.logger_helper import log_all_methods
 from client.query_reader_helper import read_graphql_file
 from client.services.base_service import BaseService
-from utils.validators import verify_graphql_has_no_errors, verify_status_code
+from utils.validators import verify_graphql_has_no_errors, verify_status_code, \
+    verify_body_has_data
 
 RepositoryVisibility = Literal["PUBLIC", "PRIVATE", "INTERNAL"]
 
@@ -76,6 +77,8 @@ class RepositoryService(BaseService):
 
             verify_status_code(response, HTTPStatus.OK)
             verify_graphql_has_no_errors(body)
+            verify_body_has_data(body)
+
             watching_data = body["data"]["viewer"]["watching"]
 
             repositories.extend(watching_data["nodes"])
@@ -89,8 +92,10 @@ class RepositoryService(BaseService):
         has_next_page = True
         while has_next_page:
             response = self.query_viewer_watching_repositories(after=after)
+            body = response.json()
+            verify_body_has_data(body)
 
-            watching_data = response.json()["data"]["viewer"]["watching"]
+            watching_data = body["data"]["viewer"]["watching"]
 
             has_next_page = watching_data["pageInfo"]["hasNextPage"]
             after = watching_data["pageInfo"]["endCursor"]
@@ -105,8 +110,10 @@ class RepositoryService(BaseService):
 
     def get_viewer_watching_repositories_count(self):
         response = self.query_viewer_watching_repositories_count()
+        body = response.json()
+        verify_body_has_data(body)
 
-        total_count = response.json()["data"]["viewer"]["watching"]["totalCount"]
+        total_count = body["data"]["viewer"]["watching"]["totalCount"]
         return total_count
 
     @staticmethod

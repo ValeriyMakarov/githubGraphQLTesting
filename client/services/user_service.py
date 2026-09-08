@@ -4,6 +4,7 @@ from requests import Response
 from client.logger_helper import log_all_methods
 from client.query_reader_helper import read_graphql_file
 from client.services.base_service import BaseService
+from utils.validators import verify_body_has_data
 
 
 @log_all_methods
@@ -21,6 +22,8 @@ class UserService(BaseService):
     def get_viewer_id(self) -> str:
         response = self.query_viewer_id()
         body = response.json()
+        verify_body_has_data(body)
+
         _id = body["data"]["viewer"]["id"]
         return _id
 

@@ -12,6 +12,11 @@ def verify_status_code(response: Response, status_code: HTTPStatus | int):
 
 
 @log_function
+def verify_body_has_data(body: dict):
+    assert_that(body).contains_key("data")
+
+
+@log_function
 def verify_graphql_has_no_errors(body: dict):
     assert_that(body).does_not_contain_key("errors")
 
