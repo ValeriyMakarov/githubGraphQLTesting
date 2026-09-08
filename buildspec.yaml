@@ -4,13 +4,6 @@ phases:
     runtime-versions:
       python: 3.11
     commands:
-      - |
-        if [ -n "$API_TOKEN" ]; then
-          echo "TOKEN IS SET"
-        else
-          echo "TOKEN IS NOT SET"
-        fi
-      - echo "${API_TOKEN:0:4}"
       - pip install -r requirements.txt
   build:
     commands:
