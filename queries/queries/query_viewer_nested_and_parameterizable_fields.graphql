@@ -1,0 +1,52 @@
+query GetViewerNestedAndParameterizableFields{
+    viewer {
+        canReceiveOrganizationEmailsWhenNotificationsRestricted(login: "google")
+        organization(login: "google") {
+            login
+        }
+        anyPinnableItems(type: PROJECT)
+        avatarUrl(size: 200)
+        contributionsCollection(from: "2000-09-20T21:00:00Z") {
+            startedAt
+        }
+        copilotEndpoints {
+            api
+        }
+        gist(name: "abc") {
+            name
+        }
+        interactionAbility {
+            limit
+        }
+        isSponsoredBy(accountLogin: "google")
+        itemShowcase {
+            hasPinnedItems
+        }
+        organizationVerifiedDomainEmails(login: "google")
+        project(number: 1) {
+            url
+        }
+        projectV2(number: 1) {
+            url
+        }
+        repository(name: "githubGraphQLTesting") {
+            name
+        }
+        sponsorsListing {
+            billingCountryOrRegion
+        }
+        sponsorshipForViewerAsSponsor(activeOnly: true) {
+            id
+        }
+        sponsorshipForViewerAsSponsorable(activeOnly: true) {
+            id
+        }
+        status {
+            id
+        }
+        suggestedListNames {
+            name
+        }
+        totalSponsorshipAmountAsSponsorInCents(since: "2000-09-20T21:00:00Z")
+    }
+}
