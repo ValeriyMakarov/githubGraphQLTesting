@@ -5,6 +5,7 @@ import pytest
 from pygments.styles.dracula import yellow
 
 from client.client import Client
+from client.query_reader_helper import read_graphql_file
 from client.services.repository_service import RepositoryService
 from client.services.user_service import UserService
 
@@ -35,3 +36,8 @@ def user_service(client):
 def repository_service(client):
     _repository_service = RepositoryService(client.copy())
     yield _repository_service
+
+
+@pytest.fixture
+def query_reader():
+    return read_graphql_file
