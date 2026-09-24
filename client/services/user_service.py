@@ -19,6 +19,11 @@ class UserService(BaseService):
         response = self.client.execute(query)
         return response
 
+    def query_viewer_leaf_fields(self) -> Response:
+        query = read_graphql_file("query_viewer_leaf_fields")
+        response = self.client.execute(query)
+        return response
+
     def get_viewer_id(self) -> str:
         response = self.query_viewer_id()
         body = response.json()
