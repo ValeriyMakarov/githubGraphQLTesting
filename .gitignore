@@ -1,3 +1,5 @@
 .env
 .idea
 allure-results
+__pycache__/
+*.pyc
