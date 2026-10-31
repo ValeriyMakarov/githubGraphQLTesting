@@ -23,7 +23,7 @@ phases:
       - mv allure-report .worktrees/gh_pages/allure-report
       - cd .worktrees/gh_pages
       - git add -A -f allure-report
-      - git commit -m "Update allure report #$CODEBUILD_BUILD_NUMBER"
+      - 'git commit -m "Update allure report #$CODEBUILD_BUILD_NUMBER"'
       - git push origin gh_pages
       - aws s3 sync allure-report/history/ s3://github-graphql-testing-198406025205-eu-north-1-an/allure-history/history/ --delete
 
