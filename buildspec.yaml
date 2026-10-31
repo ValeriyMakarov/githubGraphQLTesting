@@ -5,9 +5,43 @@ phases:
       python: 3.11
     commands:
       - pip install -r requirements.txt
+  pre_build:
+    commands:
+      - git fetch origin gh_pages
   build:
     commands:
       - pytest
-artifacts:
-  files:
-    - allure-results/**/*
+  post_build:
+    commands:
+      - aws s3 sync s3://github-graphql-testing-198406025205-eu-north-1-an/allure-history allure-results
+      - allure generate allure-results -o allure-report --clean
+      - git worktree add .worktrees/gh_pages gh_pages
+      - rm -rf .worktrees/gh_pages/allure-report
+      - mv allure-report .worktrees/gh_pages/allure-report
+      - cd .worktrees/gh_pages
+      - git add -A -f allure-report
+      - git commit -m "Update allure report #$CODEBUILD_BUILD_NUMBER"
+      - git push origin gh_pages
+      - aws s3 sync allure-report/history/ s3://github-graphql-testing-198406025205-eu-north-1-an/allure-history/history/ --delete
+
+
+#1. запускается виртуалка
+#2. скачивается репозиторий
+#3. загружаются зависимости
+#4. загружается ветка gh_pages
+#5. выполняются тесты
+#6. загружается история (так как первый запуск, ничего не скачается)
+#7. генерируется отчёт с историей (без истории при первом запуске)
+#Состояние папок:
+#  - allure-results содержит отдельные данные о тестах и папку history (при первом запуске отсутствует)
+#  - allure-report содержит репорт
+#8. создаётся worktree
+#9. удаляется папка allure-report
+#10. перемещается папка в папку ветки gh_pages
+#Состояние папок:
+#  - в .worktrees есть папка gh_pages, отвечающая за ветку gh_pages
+#  - в ветке gh_pages в корне проекта есть allure-report в актуальным отчётом
+#11. выгружается отчёт в ветку gh_pages
+#12. выгружается история в с3
+#Результат:
+#  в с3 в allure-history есть папка history, которая содержит только свежую историю
