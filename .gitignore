@@ -1,5 +1,7 @@
 .env
 .idea
 allure-results
+allure-report
+.worktrees
 __pycache__/
 *.pyc
