@@ -1,0 +1,5 @@
+INFO     client.services.user_service.UserService:logger_helper.py:63 Get viewer id.
+INFO     client.services.user_service.UserService:logger_helper.py:63 Query viewer id.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query create repository with name="three-image-son", visibility="PUBLIC", owner_id="MDQ6VXNlcjQzNzMxMTE5", description="kitchen-amount".
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.

@@ -1,0 +1,6 @@
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Get viewer watching repositories count.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories count.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=5, after=None, order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.

@@ -1,0 +1,68 @@
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Get viewer watching repositories count.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories count.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Get all viewer watching repositories with page_amount=1, order_by=None.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after=None, order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="MQ", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="Mg", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="Mw", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="NA", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="NQ", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="Ng", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="Nw", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="OA", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="OQ", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="MTA", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="MTE", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="MTI", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="MTM", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="MTQ", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.
+INFO     client.services.repository_service.RepositoryService:logger_helper.py:63 Query viewer watching repositories with first=1, after="MTU", order_by=None.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
+INFO     utils.validators:logger_helper.py:42 Verify body has data.

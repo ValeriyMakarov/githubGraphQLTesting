@@ -1,0 +1,3 @@
+INFO     client.services.user_service.UserService:logger_helper.py:63 Query viewer login.
+INFO     utils.validators:logger_helper.py:42 Verify status code with status_code=200.
+INFO     utils.validators:logger_helper.py:42 Verify graphql has no errors.
