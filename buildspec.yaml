@@ -23,33 +23,34 @@ phases:
       - aws s3 sync s3://github-graphql-testing-198406025205-eu-north-1-an/allure-history allure-results
       - allure generate allure-results -o allure-report --clean
       - git worktree add .worktrees/gh_pages gh_pages
-      - rm -rf .worktrees/gh_pages/allure-report
+      - rm -rf .worktrees/gh_pages/docs/
       - mkdir .worktrees/gh_pages/docs/
       - mv allure-report .worktrees/gh_pages/docs/
       - cd .worktrees/gh_pages
-      - git add -A -f allure-report
+      - git add -A -f docs/
       - 'git commit -m "Update allure report #$CODEBUILD_BUILD_NUMBER"'
       - git push origin gh_pages
-      - aws s3 sync allure-report/history/ s3://github-graphql-testing-198406025205-eu-north-1-an/allure-history/history/ --delete
+      - aws s3 sync docs/history/ s3://github-graphql-testing-198406025205-eu-north-1-an/allure-history/history/ --delete
 
 
-#1. запускается виртуалка
-#2. скачивается репозиторий
-#3. загружаются зависимости
-#4. загружается ветка gh_pages
-#5. выполняются тесты
-#6. загружается история (так как первый запуск, ничего не скачается)
-#7. генерируется отчёт с историей (без истории при первом запуске)
-#Состояние папок:
-#  - allure-results содержит отдельные данные о тестах и папку history (при первом запуске отсутствует)
-#  - allure-report содержит репорт
-#8. создаётся worktree
-#9. удаляется папка allure-report
-#10. перемещается папка в папку ветки gh_pages
-#Состояние папок:
-#  - в .worktrees есть папка gh_pages, отвечающая за ветку gh_pages
-#  - в ветке gh_pages в корне проекта есть allure-report в актуальным отчётом
-#11. выгружается отчёт в ветку gh_pages
-#12. выгружается история в с3
-#Результат:
-#  в с3 в allure-history есть папка history, которая содержит только свежую историю
+# 1. starting virtual machine
+# 2. downloading repository
+# 3. downloading dependencies
+# 4. downloading branch gh_pages
+# 5. running tests
+# 6. downloading history (nothing is downloading if this is the first execution)
+# 7. generating report using history (without history if this is first execution)
+# Status:
+#  - allure-results contains individual files test data and history folder (absent if this is first execution)
+#  - allure-report contains report
+# 8. creating worktree
+# 9. deleting old docs folder
+# 10. creating new docs folder
+# 11. moving new report data to docs folder of gh_pages worktree
+# Status:
+#  - .worktrees folder has gh_pages folder that corresponding to the gh_pages branch
+#  - gh_pages folder has docs folder (new report)
+# 12. uploading report to remote gh_pages branch
+# 13. uploading history to aws s3
+# Status:
+#  - aws s3 has history folder, that contains only fresh history, in allure-history prefix
