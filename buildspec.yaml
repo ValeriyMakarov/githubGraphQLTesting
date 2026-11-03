@@ -25,7 +25,7 @@ phases:
       - git worktree add .worktrees/gh_pages gh_pages
       - rm -rf .worktrees/gh_pages/docs/
       - mkdir .worktrees/gh_pages/docs/
-      - mv allure-report .worktrees/gh_pages/docs/
+      - mv allure-report/* .worktrees/gh_pages/docs/
       - cd .worktrees/gh_pages
       - git add -A -f docs/
       - 'git commit -m "Update allure report #$CODEBUILD_BUILD_NUMBER"'
