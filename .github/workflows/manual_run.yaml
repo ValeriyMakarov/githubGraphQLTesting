@@ -61,7 +61,7 @@ jobs:
           
           echo "ARGS=$ARGS" >> "$GITHUB_ENV"
       - name: run tests
-        run: pytest $ARGS
+        run: pytest $ARGS -n 0
 
       - name: upload artifacts
         uses: actions/upload-artifact@v7
