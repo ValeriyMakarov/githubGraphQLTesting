@@ -2,7 +2,6 @@ import os
 
 import dotenv
 import pytest
-from pygments.styles.dracula import yellow
 
 from client.client import Client
 from client.query_reader_helper import read_graphql_file
@@ -29,13 +28,13 @@ def client():
 @pytest.fixture
 def user_service(client):
     _user_service = UserService(client.copy())
-    yield _user_service
+    return _user_service
 
 
 @pytest.fixture
 def repository_service(client):
     _repository_service = RepositoryService(client.copy())
-    yield _repository_service
+    return _repository_service
 
 
 @pytest.fixture
