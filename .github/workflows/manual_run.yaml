@@ -56,7 +56,7 @@ jobs:
           fi
           
           if [[ -n "$TESTS" ]]; then
-            ARGS="$ARGS -k '$TESTS'"
+            ARGS="$ARGS -k $TESTS"
           fi
           
           echo "ARGS=$ARGS" >> "$GITHUB_ENV"
