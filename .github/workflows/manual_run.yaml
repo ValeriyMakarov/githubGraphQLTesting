@@ -60,6 +60,7 @@ jobs:
           fi
           
           echo "ARGS=$ARGS" >> "$GITHUB_ENV"
+          echo "Args are: $ARGS"
       - name: run tests
         run: pytest $ARGS -n 0
 
