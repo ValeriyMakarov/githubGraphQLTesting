@@ -46,14 +46,17 @@ jobs:
         run: ruff check
 
       - name: prepare pytest args
+        env:
+          ARGS: ""
+          MARK: "${{ inputs.mark }}"
+          TESTS: "${{ inputs.tests }}"
         run: |
-          ARGS=""
-          if: [ "${{ inputs.mark }}" != "All tests (.)" ]; then
-            ARGS="-m ${{ inputs.mark }}"
+          if [[ "$MARK" != "All tests (.)" ]]; then
+            ARGS="-m $MARK"
           fi
           
-          if: [ "${{ inputs.tests }}" != "" ]; then
-            ARGS="$ARGS -k '${{ inputs.tests }}'"
+          if [[ -n "$TESTS" ]]; then
+            ARGS="$ARGS -k '$TESTS'"
           fi
           
           echo "ARGS=$ARGS" >> "$GITHUB_ENV"
