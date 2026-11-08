@@ -8,18 +8,18 @@ on:
         required: true
         type: string
 
-      mark:
-        description: Pytest mark to use.
+      mark_expression:
+        description: Mark expression. Uses "pytest -m" syntax.
         required: false
-        type: choice
-        default: All tests (.)
-        options:
-          - All tests (.)
-          - smoke
-          - requires_watching_repositories
+        type: string
 
-      tests:
-        description: Tests to run. Uses "pytest -k" syntax.
+      keyword_expression:
+        description: Keyword expression. Uses "pytest -k" syntax.
+        required: false
+        type: string
+
+      node_id:
+        description: Node IDs of tests separated by commas. Uses "pytest path::class::func" syntax.
         required: false
         type: string
 
@@ -45,24 +45,30 @@ jobs:
       - name: linter
         run: ruff check
 
-      - name: prepare pytest args
+      - name: prepare and run pytest
         env:
-          ARGS: ""
-          MARK: "${{ inputs.mark }}"
-          TESTS: "${{ inputs.tests }}"
+          MARK_EXP: "${{ inputs.mark_expression }}"
+          KEY_EXP: "${{ inputs.keyword_expression }}"
+          NODE_IDS: "${{ inputs.node_id }}"
         run: |
-          if [[ "$MARK" != "All tests (.)" ]]; then
-            ARGS="-m $MARK"
+          ARGS=()
+          
+          if [[ -n "$MARK_EXP" ]]; then
+            ARGS+=(-m "$MARK_EXP")
           fi
           
-          if [[ -n "$TESTS" ]]; then
-            ARGS="$ARGS -k $TESTS"
+          if [[ -n "$KEY_EXP" ]]; then
+            ARGS+=(-k "$KEY_EXP")
           fi
           
-          echo "ARGS=$ARGS" >> "$GITHUB_ENV"
-          echo "Args are: $ARGS"
-      - name: run tests
-        run: pytest $ARGS -n 0
+          if [[ -n "$NODE_IDS" ]]; then
+            IFS=',' read -ra IDS <<< "$NODE_IDS"
+            ARGS+=("${IDS[@]}")
+          fi
+          
+          echo "Args are: ${ARGS[*]}"
+          
+          pytest "${ARGS[@]}" -n 0
 
       - name: upload artifacts
         uses: actions/upload-artifact@v7
